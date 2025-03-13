@@ -22,4 +22,6 @@ packages:
   - vim
   - nano
   # Container tools
-  - docker.io
+  #- docker.io
+  - podman
+  - kmod

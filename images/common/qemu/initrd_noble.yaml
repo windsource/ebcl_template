@@ -21,6 +21,10 @@ modules:
   - virtio-gpu
   # systemd
   - autofs4
+  # required by podman
+  - xt_nat
+  - nft_chain_nat
+  - xt_mark
 busybox: busybox
 packages:
   - kmod

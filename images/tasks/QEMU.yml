@@ -59,13 +59,14 @@ tasks:
     cmds:
       - |
         qemu-system-aarch64 \
-        -machine virt -cpu cortex-a72 -machine type=virt -nographic -m 4G \
+        -machine virt -cpu cortex-a72 -machine type=virt -nographic -m 256M \
         -netdev user,id=mynet0{{.qemu_net_append}} \
         -device virtio-net-pci,netdev=mynet0 \
         -kernel {{.result_folder}}{{.kernel}} \
         -append "{{.kernel_cmdline}} {{.kernel_cmdline_append}}" \
         -initrd {{.result_folder}}{{.initrd_img}} \
-        -drive format=raw,file={{.result_folder}}{{.disc_image}},if=virtio
+        -drive format=raw,file={{.result_folder}}{{.disc_image}},if=virtio \
+        -smp 2
     preconditions:
       - test -f {{.result_folder}}{{.disc_image}}
       - test -f {{.result_folder}}{{.initrd_img}}
